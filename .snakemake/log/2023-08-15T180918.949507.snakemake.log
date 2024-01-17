@@ -1,0 +1,33 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Job stats:
+job        count    min threads    max threads
+-------  -------  -------------  -------------
+read_qc        1              8              8
+total          1              8              8
+
+Select jobs to execute...
+
+[Tue Aug 15 18:09:19 2023]
+rule read_qc:
+    input: data/reads/barcode12_rapid.fastq
+    output: read_prep/reads_trim.fastq
+    log: logs/read_prep/reads_trim.logs
+    jobid: 0
+    threads: 8
+    resources: tmpdir=/tmp
+
+[Tue Aug 15 18:11:48 2023]
+Error in rule read_qc:
+    jobid: 0
+    output: read_prep/reads_trim.fastq
+    log: logs/read_prep/reads_trim.logs (check log file(s) for error message)
+    shell:
+        porechop -t 8 -i data/reads/barcode12_rapid.fastq -o tmp.fastq && NanoFilt -q 12 -l 50 -o tmp.fastq read_prep/reads_trim.fastq; rm tmp.fastq
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/lel005/Documents/minion_practice/.snakemake/log/2023-08-15T180918.949507.snakemake.log

@@ -1,0 +1,4 @@
+reads_in: data/reads/barcode12_rapid.fastq
+
+host_ref:
+  monkey: data/bat_ref_genome/host.fa

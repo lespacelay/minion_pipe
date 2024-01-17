@@ -1,0 +1,2 @@
+SyntaxError in line 32 of /home/lel005/Documents/minion_practice/Snakefile:
+Command must be given as string after the shell keyword. (Snakefile, line 32)

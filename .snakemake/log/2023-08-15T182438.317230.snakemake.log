@@ -1,0 +1,49 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Job stats:
+job              count    min threads    max threads
+-------------  -------  -------------  -------------
+diamond_blast        1              1              1
+read_qc              1              8              8
+total                2              1              8
+
+Select jobs to execute...
+
+[Tue Aug 15 18:24:38 2023]
+rule read_qc:
+    input: data/reads/barcode12_rapid.fastq
+    output: read_prep/reads_trim.fastq
+    log: logs/read_prep/reads_trim.logs
+    jobid: 1
+    threads: 8
+    resources: tmpdir=/tmp
+
+[Tue Aug 15 18:27:44 2023]
+Finished job 1.
+1 of 2 steps (50%) done
+Select jobs to execute...
+
+[Tue Aug 15 18:27:44 2023]
+rule diamond_blast:
+    input: read_prep/reads_trim.fastq
+    output: virus_search/diamond_blastx.txt
+    log: logs/virus_search/diamond_blastx.log
+    jobid: 0
+    resources: tmpdir=/tmp
+
+[Tue Aug 15 18:27:44 2023]
+Error in rule diamond_blast:
+    jobid: 0
+    output: virus_search/diamond_blastx.txt
+    log: logs/virus_search/diamond_blastx.log (check log file(s) for error message)
+    shell:
+        diamond blastx --query read_prep/reads_trim.fastq --outfmt 6 --remote -db nr > virus_search/diamond_blastx.txt
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job diamond_blast since they might be corrupted:
+virus_search/diamond_blastx.txt
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/lel005/Documents/minion_practice/.snakemake/log/2023-08-15T182438.317230.snakemake.log

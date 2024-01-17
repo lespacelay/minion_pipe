@@ -1,0 +1,3 @@
+KeyError in line 12 of /home/lel005/Documents/minion_practice/Snakefile:
+'reads_in'
+  File "/home/lel005/Documents/minion_practice/Snakefile", line 12, in <module>

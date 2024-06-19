@@ -1,4 +1,8 @@
-reads_in: data/reads/barcode12_rapid.fastq
+name: BRIN-ACDP_01
+threads: 24
+nr_db: /datasets/work/bioinfo-core/reference/bioref/blast/ncbi/nr
+nt_db: /datasets/work/bioinfo-core/reference/bioref/blast/ncbi/nt
+dmd_db: /datasets/work/bioinfo-core/reference/bioref/diamond_db/nr
 
 host_ref:
   monkey: data/bat_ref_genome/host.fa
